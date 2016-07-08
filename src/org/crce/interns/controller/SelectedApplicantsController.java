@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller("SelectedApplicantsController")
@@ -69,7 +70,7 @@ public class SelectedApplicantsController {
 			@ModelAttribute("professionalProfileBeanList") List<ProfessionalProfileBean> professionalProfileBeanList,
 			@ModelAttribute("personalProfileBeanList") List<PersonalProfileBean> personalProfileBeanList) {
 		try{
-		ModelAndView moel;
+		
 
 		 //System.out.println("inside controller"+company);
                     logger.error("inside controller"+company);
@@ -195,7 +196,7 @@ public class SelectedApplicantsController {
 				}
 				
 				
-				model = new ModelAndView("add-selected-success");
+				model = new ModelAndView("redirect:/viewApplicants.html?companyname="+userBean.getCompany_name()+"&year=");
 			}
 		}
 		return model;
@@ -256,7 +257,7 @@ public class SelectedApplicantsController {
 					logger.error("ERROR in addNotificationForSelectedRemoval");
 				}
 				
-				model = new ModelAndView("delete-selected-success");
+				model = new ModelAndView("redirect:/viewApplicants.html?company="+userBean.getCompany_name()+"&year=");
 			}
 		}
 		return model;
